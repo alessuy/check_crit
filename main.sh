@@ -8,7 +8,7 @@ before=$(cat $path/tmp)
 
 if ! [ $now -eq $before ]
  then
-   echo "Hay logs de interfaces del core" | mutt -s "Revisar 4500X"  apalermo@mail
+   tail -n $(echo $now-$before | bc) $file_mon  | mutt -s "Revisar 4500X"  apalermo@mail 
    echo $now > $path/tmp
  fi
 
